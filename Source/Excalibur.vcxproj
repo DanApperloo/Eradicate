@@ -1,0 +1,167 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{975BDDA6-9E8C-43CD-97F9-CCAE545AD8A6}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Excalibur</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v100</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\include;$(OGRE_HOME)\include\OIS;$(OGRE_HOME)\include\OGRE;$(OGRE_HOME)\boost;$(CEGUI_HOME)\cegui;$(CEGUI_HOME)\cegui\include;$(ProjectDir)\include;C:\Python33\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>../include/stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\$(Configuration)\Data\Bin\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <AdditionalOptions>-Zm250 %(AdditionalOptions)</AdditionalOptions>
+      <ForcedIncludeFiles>../include/stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <DisableSpecificWarnings>4251; 4193; 4482; 4275;</DisableSpecificWarnings>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\lib\$(Configuration);$(OGRE_HOME)\boost\lib;$(CEGUI_HOME)\lib;C:\Python33\libs;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain_d.lib;OIS_d.lib;CEGUIBase_d.lib;CEGUIOgreRenderer_d.lib;python33_d.lib;libboost_thread-vc100-mt-gd-1_49.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(OutDir)\$(TargetFileName)" "..\$(Configuration)\Data\Bin"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Create</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(OGRE_HOME)\include;$(OGRE_HOME)\include\OIS;$(OGRE_HOME)\include\OGRE;$(OGRE_HOME)\Samples\Common\include;$(OGRE_HOME)\boost;$(CEGUI_HOME)\cegui;$(CEGUI_HOME)\cegui\include</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>../include/stdafx.h</PrecompiledHeaderFile>
+      <PrecompiledHeaderOutputFile>..\$(Configuration)\Data\Bin\$(TargetName).pch</PrecompiledHeaderOutputFile>
+      <ForcedIncludeFiles>../include/stdafx.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OGRE_HOME)\lib\$(Configuration);$(OGRE_HOME)\boost\lib;$(CEGUI_HOME)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>OgreMain.lib;OIS.lib;CEGUIBase.lib;CEGUIOgreRenderer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>copy "$(OutDir)\$(TargetFileName)" "..\(Configuration)\Data\Bin"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="include\GraphicsEngine\GraphicEngineFsm.h" />
+    <ClInclude Include="include\GraphicsEngine\Listeners\WindowListener.h" />
+    <ClInclude Include="include\InputManagement\InputManagerFsm.h" />
+    <ClInclude Include="include\InputManagement\InputManagerMessages.h" />
+    <ClInclude Include="include\LoggingManagement\LogConfig.h" />
+    <ClInclude Include="include\LoggingManagement\LogManager.h" />
+    <ClInclude Include="include\LoggingManagement\LogMessage.h" />
+    <ClInclude Include="include\QueueManagement\QueueManager.h" />
+    <ClInclude Include="include\QueueManagement\Objects\AbstractMessage.h" />
+    <ClInclude Include="include\QueueManagement\Objects\MessageQueue.h" />
+    <ClInclude Include="include\GraphicsEngine\Managers\ConversationManagement\ConversationManager.h" />
+    <ClInclude Include="include\GraphicsEngine\Managers\EntityManagement\AnimeManager.h" />
+    <ClInclude Include="include\GraphicsEngine\Factories\AnimeComponentFactory.h" />
+    <ClInclude Include="include\GraphicsEngine\Factories\OverlayPanelFactory.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicEngine.h" />
+    <ClInclude Include="include\GraphicsEngine\Managers\FrameManagement\FrameManager.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Drawables\Drawable.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Drawables\EntityDrawable.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Drawables\ImageOverlay.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Drawables\PlaneDrawable.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Drawables\BillboardDrawable.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Entities\Sprite.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Entities\MapBlock.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Entities\StaticBackground.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicObjects\Groups\MapBlockGroup.h" />
+    <ClInclude Include="include\InputManagement\Listeners\InputBroker.h" />
+    <ClInclude Include="include\InputManagement\InputManager.h" />
+    <ClInclude Include="include\QueueManagement\MessageManager.h" />
+    <ClInclude Include="include\stdafx.h" />
+    <ClInclude Include="include\SystemManagement\SystemManager.h" />
+    <ClInclude Include="include\SystemManagement\SystemManagerFsm.h" />
+    <ClInclude Include="include\SystemManagement\SystemManagerMessages.h" />
+    <ClInclude Include="include\targetver.h" />
+    <ClInclude Include="include\Utility\Status.h" />
+    <ClInclude Include="include\GraphicsEngine\GraphicEngineMessages.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\GraphicsEngine\GraphicEngineApi.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicEngineControl.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Listeners\WindowListener.cpp" />
+    <ClCompile Include="src\InputManagement\InputManagerApi.cpp" />
+    <ClCompile Include="src\LoggingManagement\LogManager.cpp" />
+    <ClCompile Include="src\QueueManagement\QueueManager.cpp" />
+    <ClCompile Include="src\QueueManagement\Objects\MessageQueue.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Managers\ConversationManagement\ConversationManager.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Managers\EntityManagement\AnimeManager.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Factories\AnimeComponentFactory.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Factories\OverlayPanelFactory.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicEngine.cpp" />
+    <ClCompile Include="src\GraphicsEngine\Managers\FrameManagement\FrameManager.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Drawables\BillboardDrawable.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Drawables\Drawable.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Drawables\EntityDrawable.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Drawables\ImageOverlay.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Drawables\PlaneDrawable.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Entities\Sprite.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Entities\MapBlock.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Entities\StaticBackground.cpp" />
+    <ClCompile Include="src\GraphicsEngine\GraphicObjects\Groups\MapBlockGroup.cpp" />
+    <ClCompile Include="src\InputManagement\Listeners\InputBroker.cpp" />
+    <ClCompile Include="src\InputManagement\InputManager.cpp" />
+    <ClCompile Include="src\ProgramEntry.cpp" />
+    <ClCompile Include="src\stdafx.cpp" />
+    <ClCompile Include="src\SystemManagement\SystemManager.cpp" />
+    <ClCompile Include="src\SystemManagement\SystemManagerCallbacks.cpp" />
+    <ClCompile Include="src\SystemManagement\SystemManagerControl.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
